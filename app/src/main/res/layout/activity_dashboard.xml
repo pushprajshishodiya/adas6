@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- ═══════════════════════════════════════════════
+         MAIN CONTENT
+    ════════════════════════════════════════════════════ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <!-- Back-lens preview (road ahead) -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewFront"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:scaleType="fillCenter"/>
+
+        <!-- ADAS overlay canvas -->
+        <com.adas.app.overlay.AdasOverlayView
+            android:id="@+id/adasOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!-- Google Map overlay (hidden by default) -->
+        <FrameLayout
+            android:id="@+id/mapFragment"
+            android:layout_width="140dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="10dp"
+            android:visibility="gone"
+            android:background="#CC000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- TOP WARNING BANNER -->
+        <TextView
+            android:id="@+id/tvWarningBanner"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- MENU BUTTON top-right -->
+        <ImageButton
+            android:id="@+id/btnMenu"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_circle_dark"
+            android:src="@android:drawable/ic_menu_more"
+            android:contentDescription="Menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- HEADING top-center -->
+        <TextView
+            android:id="@+id/tvHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N 0°"
+            android:textColor="#00E5FF"
+            android:textSize="13sp"
+            android:fontFamily="monospace"
+            android:background="#88000000"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- LEFT SIDE SPACE BAR -->
+        <LinearLayout
+            android:id="@+id/layoutLeft"
+            android:layout_width="36dp"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="L" android:textColor="#78909C" android:textSize="10sp"
+                android:fontFamily="monospace" android:layout_marginBottom="3dp"/>
+
+            <FrameLayout android:layout_width="14dp" android:layout_height="130dp"
+                android:background="#263238">
+                <View android:id="@+id/progressLeft"
+                    android:layout_width="match_parent" android:layout_height="0dp"
+                    android:layout_gravity="bottom" android:background="#00E676"/>
+            </FrameLayout>
+
+            <TextView android:id="@+id/tvLeftPct" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="100%"
+                android:textColor="#00E5FF" android:textSize="9sp" android:fontFamily="monospace"
+                android:layout_marginTop="3dp"/>
+            <TextView android:id="@+id/tvLeftDist" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="—"
+                android:textColor="#546E7A" android:textSize="9sp" android:fontFamily="monospace"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- RIGHT SIDE SPACE BAR -->
+        <LinearLayout
+            android:id="@+id/layoutRight"
+            android:layout_width="36dp"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginEnd="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="R" android:textColor="#78909C" android:textSize="10sp"
+                android:fontFamily="monospace" android:layout_marginBottom="3dp"/>
+
+            <FrameLayout android:layout_width="14dp" android:layout_height="130dp"
+                android:background="#263238">
+                <View android:id="@+id/progressRight"
+                    android:layout_width="match_parent" android:layout_height="0dp"
+                    android:layout_gravity="bottom" android:background="#00E676"/>
+            </FrameLayout>
+
+            <TextView android:id="@+id/tvRightPct" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="100%"
+                android:textColor="#00E5FF" android:textSize="9sp" android:fontFamily="monospace"
+                android:layout_marginTop="3dp"/>
+            <TextView android:id="@+id/tvRightDist" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="—"
+                android:textColor="#546E7A" android:textSize="9sp" android:fontFamily="monospace"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- LANE OFFSET BAR (horizontal, bottom-center) -->
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="8dp"
+            android:background="#263238"
+            android:layout_marginBottom="132dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <View android:id="@+id/laneOffsetBar"
+                android:layout_width="6dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical|start"
+                android:background="#00E5FF"/>
+        </FrameLayout>
+
+        <!-- STEERING GUIDE card -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#AA0A0E14"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
+            android:layout_marginBottom="136dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView android:id="@+id/tvSteeringNotes"
+                android:layout_width="140dp" android:layout_height="wrap_content"
+                android:text="Keep straight" android:textColor="#00E5FF"
+                android:textSize="11sp" android:fontFamily="monospace"/>
+            <TextView android:id="@+id/tvSteeringDeg"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Wheel: 0°" android:textColor="#FFFFFF"
+                android:textSize="10sp" android:fontFamily="monospace"/>
+            <TextView android:id="@+id/tvSteeringSpeed"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Max: — km/h" android:textColor="#78909C"
+                android:textSize="10sp" android:fontFamily="monospace"/>
+        </LinearLayout>
+
+        <!-- BOTTOM HUD -->
+        <LinearLayout
+            android:id="@+id/bottomHud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#CC0A0E14"
+            android:paddingTop="8dp"
+            android:paddingBottom="12dp"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- FRONT card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFront"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#CC00C853"
+                app:cardElevation="0dp"
+                android:layout_marginEnd="5dp">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" android:gravity="center" android:padding="7dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="▲ FRONT" android:textColor="#FFFFFFBB" android:textSize="9sp"
+                        android:fontFamily="monospace"/>
+                    <TextView android:id="@+id/tvFrontLabel" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="CLEAR"
+                        android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"
+                        android:fontFamily="monospace"/>
+                    <TextView android:id="@+id/tvFrontDist" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="—"
+                        android:textColor="#FFFFFFDD" android:textSize="17sp" android:textStyle="bold"
+                        android:fontFamily="monospace"/>
+                    <TextView android:id="@+id/tvFrontSpeed" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text=""
+                        android:textColor="#FFFFFFAA" android:textSize="10sp"
+                        android:fontFamily="monospace"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- EGO SPEED -->
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1.1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/tvEgoSpeed" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="0"
+                    android:textColor="#FFFFFF" android:textSize="48sp" android:textStyle="bold"
+                    android:fontFamily="monospace"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="km/h" android:textColor="#00E5FF" android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+            </LinearLayout>
+
+            <!-- REAR card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#CC00C853"
+                app:cardElevation="0dp"
+                android:layout_marginStart="5dp">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" android:gravity="center" android:padding="7dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="▼ REAR" android:textColor="#FFFFFFBB" android:textSize="9sp"
+                        android:fontFamily="monospace"/>
+                    <TextView android:id="@+id/tvRearLabel" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="CLEAR"
+                        android:textColor="#FFFFFF" android:textSize="12sp" android:textStyle="bold"
+                        android:fontFamily="monospace"/>
+                    <TextView android:id="@+id/tvRearDist" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="—"
+                        android:textColor="#FFFFFFDD" android:textSize="17sp" android:textStyle="bold"
+                        android:fontFamily="monospace"/>
+                    <TextView android:id="@+id/tvRearSpeed" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text=""
+                        android:textColor="#FFFFFFAA" android:textSize="10sp"
+                        android:fontFamily="monospace"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- PIP rear camera top-right -->
+        <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/previewRear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:scaleType="fillCenter"/>
+
+            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                android:background="@drawable/pip_border"/>
+
+            <TextView android:id="@+id/tvRearCamLabel"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_gravity="bottom" android:background="#99000000"
+                android:text="REAR CAM" android:textColor="#00E5FF" android:textSize="8sp"
+                android:fontFamily="monospace" android:gravity="center" android:padding="2dp"/>
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ═══════════════════════════════════════════════
+         SIDE DRAWER (slides from right)
+    ════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/navView"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:background="#F01A2332"
+        android:padding="16dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="◈ ADAS SETTINGS" android:textColor="#00E5FF" android:textSize="16sp"
+            android:textStyle="bold" android:fontFamily="monospace" android:layout_marginBottom="16dp"/>
+
+        <!-- Camera toggles -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="CAMERAS" android:textColor="#78909C" android:textSize="11sp"
+            android:fontFamily="monospace" android:layout_marginBottom="6dp"/>
+
+        <Switch android:id="@+id/swFrontCam"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Front Camera (road ahead)"
+            android:textColor="#FFFFFF" android:textSize="13sp"
+            android:checked="true" android:layout_marginBottom="8dp"/>
+
+        <Switch android:id="@+id/swRearCam"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Rear Camera (traffic behind)"
+            android:textColor="#FFFFFF" android:textSize="13sp"
+            android:checked="true" android:layout_marginBottom="16dp"/>
+
+        <!-- Map toggle -->
+        <Switch android:id="@+id/swMapOverlay"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Show Map Overlay"
+            android:textColor="#FFFFFF" android:textSize="13sp"
+            android:checked="false" android:layout_marginBottom="16dp"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#2200E5FF" android:layout_marginBottom="16dp"/>
+
+        <!-- Vehicle profile summary -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="VEHICLE PROFILE" android:textColor="#78909C" android:textSize="11sp"
+            android:fontFamily="monospace" android:layout_marginBottom="6dp"/>
+
+        <TextView android:id="@+id/tvProfileSummary"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="—" android:textColor="#B0BEC5" android:textSize="12sp"
+            android:fontFamily="monospace" android:lineSpacingExtra="3dp"
+            android:layout_marginBottom="10dp"/>
+
+        <Button android:id="@+id/btnEditProfile"
+            android:layout_width="match_parent" android:layout_height="40dp"
+            android:text="Edit Vehicle Profile"
+            android:textSize="13sp" android:backgroundTint="#00B0D0"
+            android:layout_marginBottom="16dp"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#2200E5FF" android:layout_marginBottom="16dp"/>
+
+        <!-- Live sensor info -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="SENSORS" android:textColor="#78909C" android:textSize="11sp"
+            android:fontFamily="monospace" android:layout_marginBottom="6dp"/>
+
+        <TextView android:id="@+id/tvHeadingInfo"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Heading: —" android:textColor="#B0BEC5" android:textSize="12sp"
+            android:fontFamily="monospace" android:lineSpacingExtra="3dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView android:id="@+id/tvAccelInfo"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Accel: —" android:textColor="#B0BEC5" android:textSize="12sp"
+            android:fontFamily="monospace" android:lineSpacingExtra="3dp"/>
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

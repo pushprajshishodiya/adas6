@@ -1,0 +1,2 @@
+-keep class com.adas.app.** { *; }
+-keep class com.google.android.gms.** { *; }

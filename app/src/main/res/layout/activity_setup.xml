@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E14">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="◈ VEHICLE SETUP" android:textColor="#00E5FF"
+            android:textSize="22sp" android:textStyle="bold" android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Configure your vehicle dimensions and camera placement\nfor accurate ADAS measurements."
+            android:textColor="#78909C" android:textSize="13sp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- IDENTITY -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="VEHICLE IDENTITY" android:textColor="#00B0D0"
+            android:textSize="12sp" android:fontFamily="monospace" android:layout_marginBottom="8dp"/>
+
+        <EditText android:id="@+id/etVehicleName" android:layout_width="match_parent"
+            android:layout_height="52dp" android:hint="Vehicle name (e.g. My SUV)"
+            android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+            android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+            android:layout_marginBottom="10dp" android:inputType="text"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="10dp">
+            <EditText android:id="@+id/etMake" android:layout_width="0dp"
+                android:layout_height="52dp" android:layout_weight="1" android:hint="Make"
+                android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                android:layout_marginEnd="8dp" android:inputType="text"/>
+            <EditText android:id="@+id/etModel" android:layout_width="0dp"
+                android:layout_height="52dp" android:layout_weight="1" android:hint="Model"
+                android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                android:layout_marginEnd="8dp" android:inputType="text"/>
+            <EditText android:id="@+id/etYear" android:layout_width="80dp"
+                android:layout_height="52dp" android:hint="Year"
+                android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <!-- DIMENSIONS -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="DIMENSIONS (metres)" android:textColor="#00B0D0"
+            android:textSize="12sp" android:fontFamily="monospace"
+            android:layout_marginTop="12dp" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="10dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Length" android:textColor="#78909C" android:textSize="11sp"/>
+                <EditText android:id="@+id/etLength" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:hint="4.5"
+                    android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                    android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Width" android:textColor="#78909C" android:textSize="11sp"/>
+                <EditText android:id="@+id/etWidth" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:hint="1.8"
+                    android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                    android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Wheelbase" android:textColor="#78909C" android:textSize="11sp"/>
+                <EditText android:id="@+id/etWheelbase" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:hint="2.7"
+                    android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                    android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- CAMERA PLACEMENT -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="CAMERA / PHONE PLACEMENT" android:textColor="#00B0D0"
+            android:textSize="12sp" android:fontFamily="monospace"
+            android:layout_marginTop="12dp" android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Measure from ground to where your phone is mounted"
+            android:textColor="#546E7A" android:textSize="11sp" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="10dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Height from ground (m)" android:textColor="#78909C" android:textSize="11sp"/>
+                <EditText android:id="@+id/etCamHeight" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:hint="1.2"
+                    android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                    android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Camera FOV (degrees)" android:textColor="#78909C" android:textSize="11sp"/>
+                <EditText android:id="@+id/etCamFov" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:hint="70"
+                    android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                    android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- STEERING -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="STEERING CHARACTERISTICS" android:textColor="#00B0D0"
+            android:textSize="12sp" android:fontFamily="monospace"
+            android:layout_marginTop="12dp" android:layout_marginBottom="4dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Used to calculate steering wheel rotation guidance"
+            android:textColor="#546E7A" android:textSize="11sp" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="10dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Steering ratio (e.g. 16)" android:textColor="#78909C" android:textSize="11sp"/>
+                <EditText android:id="@+id/etSteerRatio" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:hint="16"
+                    android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                    android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Min turn radius (m)" android:textColor="#78909C" android:textSize="11sp"/>
+                <EditText android:id="@+id/etTurnRadius" android:layout_width="match_parent"
+                    android:layout_height="52dp" android:hint="5.5"
+                    android:textColor="#FFFFFF" android:textColorHint="#546E7A"
+                    android:background="@drawable/input_bg" android:paddingHorizontal="14dp"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- COMMON PRESETS -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="QUICK PRESETS" android:textColor="#00B0D0"
+            android:textSize="12sp" android:fontFamily="monospace"
+            android:layout_marginTop="12dp" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="24dp">
+            <Button android:id="@+id/btnPresetSedan"
+                android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                android:text="Sedan" android:textSize="11sp" android:backgroundTint="#1A263238"
+                android:layout_marginEnd="6dp"/>
+            <Button android:id="@+id/btnPresetSuv"
+                android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                android:text="SUV" android:textSize="11sp" android:backgroundTint="#1A263238"
+                android:layout_marginEnd="6dp"/>
+            <Button android:id="@+id/btnPresetTruck"
+                android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                android:text="Truck" android:textSize="11sp" android:backgroundTint="#1A263238"/>
+        </LinearLayout>
+
+        <!-- SAVE -->
+        <Button android:id="@+id/btnSaveProfile"
+            android:layout_width="match_parent" android:layout_height="54dp"
+            android:text="SAVE &amp; START ADAS" android:textSize="15sp"
+            android:textStyle="bold" android:backgroundTint="#00B0D0"
+            android:layout_marginBottom="12dp"/>
+
+        <Button android:id="@+id/btnSkip"
+            android:layout_width="match_parent" android:layout_height="44dp"
+            android:text="Use Defaults" android:textSize="13sp"
+            android:backgroundTint="#1A263238"/>
+
+    </LinearLayout>
+</ScrollView>
